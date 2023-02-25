@@ -3,12 +3,13 @@
         <title>Week 6</title>
     </head>
     <body>
-        <div id="buttons"></div>
         <script>
-            const containerDiv = document.getElementById("buttons");
-            var array1 = ["Ahmet", 2, true, 0, []];
-            array1.forEach((item, index) => {
-                containerDiv.innerHTML += `<button>${item}</button>`;
+            var object = {
+                birinci: 542,
+                ikinci: "gujdsx90"
+            };
+            Object.keys(object).forEach((item) => {
+                console.log(object[item]);
             });
         </script>
     </body>
