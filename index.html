@@ -3,12 +3,21 @@
         <title>Week 6</title>
     </head>
     <body>
+        <div id="buttons"></div>
         <script>
-            function test() {
-                x = "dsgsdg";
+            const containerDiv = document.getElementById("buttons");
+            const dataCount = 78;
+            const dataCountForPerPage = 10;
+
+            let pageCount = Math.ceil(dataCount / dataCountForPerPage);
+
+            for(let i = 1; i <= pageCount; i++) {
+                containerDiv.innerHTML += "<button onclick='goToPage(" + i + ")'>" + i + "</button>";
             }
-            test();
-            console.log("after:", x);
+
+            function goToPage(pageIndex) {
+                alert(pageIndex);
+            }
         </script>
     </body>
 </html>
