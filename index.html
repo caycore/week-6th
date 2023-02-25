@@ -1,15 +1,140 @@
 <html>
     <head>
         <title>Week 6</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            html, body, #root {
+                background-color: rgb(230, 230, 230);
+                height: 100%;
+                width: 100%;
+            }
+
+            .person {
+                background-color: rgb(255, 255, 255);
+                flex-direction: column;
+                border-radius: 10px;
+                user-select: none;
+                display: flex;
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .person > .title {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                margin-bottom: 4px;
+                font-size: 14px;
+            }
+
+            .person > .job {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 10px;
+            }
+
+            .person:hover {
+                cursor: pointer;
+                opacity: 0.5;
+            }
+
+            .person:active {
+                transform: translateY(2px);
+            }
+        </style>
     </head>
     <body>
+        <div id="root"></div>
         <script>
-            var object = {
-                birinci: 542,
-                ikinci: "gujdsx90"
+            const names = [
+                "Ahmet",
+                "Mehmet",
+                "Murat",
+                "Ayşe",
+                "Fatma",
+                "Kezban",
+                "Nurdan",
+                "Furkan",
+                "Atakan",
+                "Osman",
+                "Mahmut",
+                "Enes",
+                "Bilal",
+                "Rahmi",
+                "Büşra",
+                "Can",
+                "Hüseyin"
+            ];
+
+            const surnames = [
+                "Yılmaz",
+                "Yıldırım",
+                "Bozkurt",
+                "Ceylan",
+                "Demir",
+                "Kara",
+                "Akalın",
+                "Akça",
+                "Aksakal",
+                "Aksoy"
+            ];
+
+            const jobs = [
+                "Tamirci",
+                "Tornacı",
+                "Programcı",
+                "Camcı",
+                "Çaycı",
+                "Öğretmen",
+                "Geliştirici",
+                "Şoför",
+                "Akademisyen",
+                "Lidyum Pil",
+                "Çinko Pil",
+                "Sıradan Çinko Pil",
+                "Aşçı",
+                "Terzi",
+                "Güvenlik",
+                "Marangoz",
+                "Balıkçı"
+            ];
+
+            const randomName = () => {
+                return names[Math.floor(Math.random() * names.length)];
             };
-            Object.keys(object).forEach((item) => {
-                console.log(object[item]);
+
+            const randomSurname = () => {
+                return surnames[Math.floor(Math.random() * surnames.length)];
+            };
+
+            const randomFullName = () => {
+                const name = randomName();
+                const surname = randomSurname();
+
+                return `${name} ${surname}`;
+            };
+
+            const randomJob = () => {
+                return jobs[Math.floor(Math.random() * jobs.length)];
+            };
+            
+            let data = [];
+            for(let i = 0; i < 78; i++) {
+                data.push({
+                    title: randomFullName(),
+                    job: randomJob(),
+                    id: i
+                });
+            }
+
+            const containerDiv = document.getElementById("root");
+
+            data.forEach((item, index) => {
+                containerDiv.innerHTML += `<div id="${item.id}" class="person person-${index}">
+                    <span class="title">${item.title}</span>
+                    <span class="job">${item.job}</span>
+                </div>`;
             });
         </script>
     </body>
